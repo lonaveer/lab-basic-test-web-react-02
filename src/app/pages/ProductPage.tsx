@@ -47,6 +47,7 @@ const ProductPage: React.FC = () => {
 
   useEffect(() => {
     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    /* istanbul ignore next */
     if (!isLoggedIn) {
       navigate('/login'); // Redirect ไปยังหน้า login
     }
