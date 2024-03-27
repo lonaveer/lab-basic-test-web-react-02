@@ -78,13 +78,13 @@ describe('UserProfile', () => {
     // rerender component เพื่อจำลองการเปลี่ยนแปลงใน response
     rerender(<UserProfile />);
 
-    // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Name: John Doe' ภายในหน้าจอ
+    // คลิกปุ่ม 'Load User Profile'
     fireEvent.click(screen.getByText('Load User Profile'));
 
-    // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Age: 34' ภายในหน้าจอ
+    // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Name: John Doe' ภายในหน้าจอ
     expect(await screen.findByText('Name: John Doe')).toBeInTheDocument();
 
-    // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Name: John Doe' ภายในหน้าจอ
+    // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Age: 34' ภายในหน้าจอ
     expect(await screen.findByText('Age: 34')).toBeInTheDocument();
   });
 
