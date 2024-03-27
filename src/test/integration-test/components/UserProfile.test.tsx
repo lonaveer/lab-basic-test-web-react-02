@@ -10,7 +10,7 @@ describe('UserProfile', () => {
   // 1. ไม่โหลดข้อมูลโปรไฟล์ก่อนคลิกปุ่ม
   test('ไม่แสดงข้อมูลโปรไฟล์ก่อนการคลิกปุ่ม', () => {
     // // ทำการ render component 'UserProfile'
-    // xxxxx
+    // xxxxx(<UserProfile />);
 
     // // ====================================================================================
     // // (กรณีต้องการตรวจสอบ Text ในหน้าจอที่เป็นค่า default , สามารถใช้ queryByText แทน findByText
@@ -19,10 +19,10 @@ describe('UserProfile', () => {
     // // ====================================================================================
 
     // // ตรวจสอบผลลัพธ์ : จะต้องไม่พบ text 'Name:' ภายในหน้าจอ
-    // xxxxx(xxxxx.xxxxx(xxxxx)).xxxxx.xxxxx();
+    // expect(screen.queryByText('xxxxx')).xxxxx.xxxxx();
 
     // // ตรวจสอบผลลัพธ์ : จะต้องไม่พบ text 'Age:' ภายในหน้าจอ
-    // xxxxx
+    // expect(xxxxx.queryByText('xxxxx')).xxxxx.xxxxx();
   });
 
   // 2. โหลดและแสดงข้อมูลโปรไฟล์ผู้ใช้
@@ -34,13 +34,13 @@ describe('UserProfile', () => {
     // xxxxx
 
     // // คลิกปุ่ม 'Load User Profile'
-    // xxxxx
+    // fireEvent.xxxxx(screen.getByText('xxxxx'));
 
     // // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Name: Jane Doe' ภายในหน้าจอ
-    // xxxxx
+    // expect(await screen.findByText('xxxxx')).xxxxx();
 
     // // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Age: 32' ภายในหน้าจอ
-    // xxxxx
+    // expect(await screen.findByText('xxxxx')).xxxxx();
   });
 
   // 3. จัดการกับ error หาก API ล้มเหลว
@@ -55,7 +55,7 @@ describe('UserProfile', () => {
     // xxxxx
 
     // // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Failed to load user profile' ภายในหน้าจอ
-    // xxxxx
+    // expect(await xxxxx.findByText('xxxxx')).xxxxx();
   });
 
   // 4. อัพเดทข้อมูลโปรไฟล์เมื่อ API response เปลี่ยนแปลง
@@ -64,13 +64,13 @@ describe('UserProfile', () => {
     // xxxxx.xxxxx.xxxxx({ data: { name: 'Jane Doe', age: 32 } });
 
     // // ทำการ render component 'UserProfile' และดึงค่า rerender มารอก่อน
-    // const { rerender } = xxxxx(xxxxx);
+    // const { rerender } = render(<UserProfile />);
 
     // // คลิกปุ่ม 'Load User Profile'
-    // xxxxx
+    // fireEvent.xxxxx(screen.getByText('xxxxx'));
 
     // // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Name: Jane Doe' ภายในหน้าจอ
-    // xxxxx
+    // expect(await xxxxx.findByText('xxxxx')).xxxxx();
 
     // // ทำการจำลองค่า return ของ axios (อีกรอบ)
     // xxxxxx.xxxxx.xxxxx({ data: { name: 'John Doe', age: 34 } });
@@ -78,14 +78,14 @@ describe('UserProfile', () => {
     // // rerender component เพื่อจำลองการเปลี่ยนแปลงใน response
     // rerender(<UserProfile />);
 
+    // // คลิกปุ่ม 'Load User Profile'
+    // fireEvent.xxxxx(xxxxx.getByText('xxxxx'));
+
     // // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Name: John Doe' ภายในหน้าจอ
-    // xxxxx
+    // expect(await screen.findByText('xxxxx')).xxxxx();
 
     // // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Age: 34' ภายในหน้าจอ
-    // xxxxx
-
-    // // ตรวจสอบผลลัพธ์ : จะต้องพบ text 'Name: John Doe' ภายในหน้าจอ
-    // xxxxx
+    // expect(await xxxxx.findByText('xxxxx')).xxxxx();
   });
 
   // 5. API ถูกเรียกเพียงครั้งเดียวเมื่อคลิกปุ่ม
@@ -98,9 +98,9 @@ describe('UserProfile', () => {
 
     // // หากมีการเรียกใช้ 'fireEvent' แล้วพบว่า expect ไม่มี await
     // // ต้องใช้ act ครอบ expect อีกที , เพื่อให้ expect นั้นรอค่าผลลัพธ์หลังจาก UI นั้นแสดงผลเสร็จสิ้น
-    // await xxxxx(async () => {
+    // await act(async () => {
     //   // ตรวจสอบว่าการเรียกใช้งาน mockedAxios.get ถูกทำเพียงครั้งเดียวหลังจากคลิก
-    //   xxxxx(xxxxx).xxxxx(xxxxx);
+    //   expect(mockedAxios.get).toHaveBeenCalledTimes(1);
     // })
   });
 });
